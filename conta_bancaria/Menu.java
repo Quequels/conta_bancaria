@@ -1,16 +1,42 @@
-package conta;
+package conta_bancaria;
 
 import java.util.Scanner;
 
-public class Menu {
+import conta_bancaria.model.Conta;
+import conta_bancaria.model.ContaCorrente;
+import conta_bancaria.model.ContaPoupanca;
+import conta_bancaria.util.Cores;
 
+
+public class Menu {
+	
+	private static final Scanner leia = new Scanner(System.in);
+	
+	
 	public static void main(String[] args) {
-		Scanner leia = new Scanner(System.in);
+		// Teste da Classe Conta Corrente
+				ContaCorrente cc1 = new ContaCorrente(2, 123, 1, "José da Silva", 0.0f, 1000.0f);
+				cc1.visualizar();
+				cc1.sacar(12000.0f);
+				cc1.visualizar();
+				cc1.depositar(5000.0f);
+				cc1.visualizar();
+				
+		        // Teste da Classe Conta Poupança
+				ContaPoupanca cp1 = new ContaPoupanca(3, 123, 2, "Maria dos Santos", 100000.0f, 15);
+				cp1.visualizar();
+		        cp1.sacar(1000.0f);
+				cp1.visualizar();
+				cp1.depositar(5000.0f);
+				cp1.visualizar();
+			
+		
 		
 		int opcao;
 		
 		while(true) {
-			System.out.println("*********************************************");
+			
+			System.out.println(Cores.TEXT_YELLOW + Cores.ANSI_BLACK_BACKGROUND+"*********************************************");
 			System.out.println("                                             ");
 			System.out.println("          BRANCO DO BRZIL COM Z              ");
 			System.out.println("                                             ");
@@ -27,8 +53,9 @@ public class Menu {
 			System.out.println("     0-Sair                                  ");
 			System.out.println("                                             ");
 			System.out.println("*********************************************");
-			System.out.println("Entre com a opção desejada:");
-			System.out.println("                                             ");
+			System.out.println("Entre com a opção desejada:                  ");
+			System.out.println("                                             "+Cores.TEXT_RESET);
+			
 			opcao = leia.nextInt();
 			
 			if(opcao == 0 ) {
@@ -81,7 +108,7 @@ public class Menu {
 				break;
 				
 			case 9:
-				System.out.println("\nOpção inválida\n");
+				System.out.println("\nOpção inválida\n" + Cores.TEXT_RESET);
 				
 				break;
 			}
